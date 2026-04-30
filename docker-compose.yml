@@ -1,0 +1,7 @@
+services:
+  ui-tests:
+    image: java-ui-testing:latest
+    build: .
+    volumes:
+      - .:/docker/project
+    command: /bin/sh -c "mvn clean test -Dheadless=true || true; allure generate allure-data -c --single-file"
